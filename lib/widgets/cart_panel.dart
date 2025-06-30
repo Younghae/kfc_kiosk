@@ -204,7 +204,7 @@ class CartPanel extends StatelessWidget {
                       ),
               ),
 
-              // 하단 전체취소 및 주문 버튼
+              // 하단 버튼들과 총합계
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -238,28 +238,63 @@ class CartPanel extends StatelessWidget {
                         ),
                       ),
 
-                    // 총 금액
+                    // 총 금액 표시
                     Container(
+                      width: double.infinity,
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.grey[100],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Row(
+                      child: Column(
                         children: [
-                          const Text(
-                            '주문금액',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                          Row(
+                            children: [
+                              const Text(
+                                '주문금액',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              const Spacer(),
+                              // 오른쪽에 큰 가격 표시
+                              Column(
+                                children: [
+                                  // 큰 빨간 동그라미 안에 가격
+                                  Container(
+                                    width: 100,
+                                    height: 40,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.red,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '₩ 0',
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          const Spacer(),
-                          Text(
-                            '₩ ${_formatPrice(cartProvider.totalPrice)}',
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
-                            ),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                '₩ ${_formatPrice(cartProvider.totalPrice)}',
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

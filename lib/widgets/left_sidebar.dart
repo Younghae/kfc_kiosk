@@ -38,10 +38,29 @@ class LeftSidebar extends StatelessWidget {
             ),
           ),
 
-          // 구분선
+          // 광고 배너와 매장식사/포장주문 버튼과 구분선 높이만큼 빈 공간
+          // 320 (광고배너) + 80 (버튼) + 1 (구분선) = 401px
+          SizedBox(height: 401),
+
+          // 메뉴 카테고리 제목 (상품 목록과 정확히 같은 높이)
           Container(
-            height: 2,
-            color: Colors.grey[200],
+            height: 60,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(color: Colors.grey[300]!, width: 1),
+              ),
+            ),
+            child: const Text(
+              '메뉴 카테고리',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
           ),
 
           // 카테고리 목록
